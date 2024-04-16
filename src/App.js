@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import NewsContent from './components/NewsContent/NewsContent';
 import Footer from './components/Footer/Footer';
 
-import apikey from "./data/config";
+// import apikey from "./data/config";
 import axios from 'axios';
 
 function App() {
@@ -23,8 +23,12 @@ function App() {
 
     try{
       const news = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${loadMore}`
+        `https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_API_KEY}&category=${category}&pageSize=${loadMore}`
       );
+
+      // if u use apikey from data/config.js -- 
+      // `https://newsapi.org/v2/top-headlines?country=in&apiKey=${apikey}&category=${category}&pageSize=${loadMore}`
+
 //      `${proxyUrl}https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_API_KEY}&pageSize=${loadMore}&category=${category}`
 
 // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
